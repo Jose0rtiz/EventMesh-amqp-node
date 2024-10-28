@@ -1,1 +1,1 @@
-# EventMesh-amqp-node-
+# EventMesh-amqp-node
