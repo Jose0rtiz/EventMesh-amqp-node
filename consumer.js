@@ -36,7 +36,7 @@ const options = {
     }]
 };
 
-// Start messaging client
+// Inicializar cliente de mensajería
 const client = new msg.Client(options);
 
 client.on("connected", () => {
@@ -50,7 +50,7 @@ client.on("connected", () => {
     setTimeout(()=> client.connect(), 60000); //<- Automatically re-connect when disconnected.
 });
 
-//Subscribe to the Queue and Process Messages
+//Suscripción a la cola
 client.istream("MyIStream")
 .on('subscribed', () =>{
     console.log("Successfully subscribed to the target queue.");
@@ -76,7 +76,7 @@ client.istream("MyIStream")
         }
     }
 });
-// All handlers are ready and now connect:
+// Conexión del cliente
 client.connect();
 
 async function dequeueLastMessage() {
