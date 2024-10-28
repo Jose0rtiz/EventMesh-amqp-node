@@ -3,10 +3,10 @@ require('dotenv').config();
 
 const options = {
     "destinations": [{
-        "name": "TheEventMeshSvcForMyProject",   //<- Give any name
-        "type": "amqp-v100", //<- Use this value or what's found in the Service Key
+        "name": "TheEventMeshSvcForMyProject",   //<- Dar un nombre cualquiera
+        "type": "amqp-v100", //<- Valor específico para amqp
         "peer": {
-            "type": "sapmgw" //<- Use this value
+            "type": "sapmgw" //<- Valor específico para amqp
         },
         "oa2": {
             "endpoint": process.env.tokenEndpoint,
