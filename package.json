@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@sap/xb-msg": "^0.9.12"
+  }
+}
