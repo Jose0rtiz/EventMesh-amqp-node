@@ -19,7 +19,7 @@ const options = {
                 "sndSettleMode": 0,
                 "rcvSettleMode": 0,
                 "source": {
-                    "address": "queue:"+ process.env.queueName, 
+                    "address": "topic:"+ process.env.topicName, 
                     "expires": "connection-close",
                     "timeout": 0,
                     "durable": 0
