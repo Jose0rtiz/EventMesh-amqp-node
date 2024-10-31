@@ -78,30 +78,3 @@ client.istream("MyIStream")
 });
 // Conexión del cliente
 client.connect();
-
-async function dequeueLastMessage() {
-    return new Promise( async (resolve, reject)=> {
-        let oAuthToken = process.env.tokenEndpoint; //Obtain an OAuth token first.
-        const url = process.env.evenMeshUrl + "/messagingrest/v1/queues/"+ process.env.queueNameF+"/messages"
-        let resp = await Axios( { //<- Get the last message
-                method: "POST",
-                url: url + "/consumption",
-                headers: {  "content-type": "application/json", "x-qos":"1", "Authorization":"Bearer " + oAuthToken}
-            });
-    
-            if( resp.status == 200) {  //<- Message successfully retrieved.
-                let messageId = resp.headers["x-message-id"];//<- Get the message’s ID
-    
-                let ack = await Axios( { //<- Acknowledge the queue to remove the message.
-                    method: "POST",
-                    url: url + messageId + "/acknowledgement",
-                    headers: {"content-type": "application/json", "x-qos":"1", "Authorization":"Bearer " + oAuthToken}
-                });
-
-                resolve(ack);
-            }
-            else {
-                resolve(resp);
-            }
-        });
-    }
